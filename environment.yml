@@ -1,0 +1,6 @@
+name: gromacs
+channels:
+    - conda-forge
+dependencies:
+    - poetry
+    - conda-lock
