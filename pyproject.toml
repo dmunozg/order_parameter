@@ -1,9 +1,45 @@
-[build-system]
-# AVOID CHANGING REQUIRES: IT WILL BE UPDATED BY PYSCAFFOLD!
-requires = ["setuptools>=46.1.0", "setuptools_scm[toml]>=5"]
-build-backend = "setuptools.build_meta"
+[tool.poetry]
+name = "order-parameter"
+version = "0.0.0"
+description = "Calculates the order parameter and predicted quadrupolar splitting out of a GROMACS trajectory"
+authors = ["dmunozg <diego@asgamers.net>"]
+readme = "README.md"
+license = "MIT"
 
-[tool.setuptools_scm]
-# For smarter version schemes and other configuration options,
-# check out https://github.com/pypa/setuptools_scm
-version_scheme = "no-guess-dev"
+[tool.poetry.dependencies]
+python = ">=3.10,<3.11"
+conda-lock = "^2.4.2"
+
+[tool.poetry.group.dev.dependencies]
+isort = "^5.12.0"
+ruff = "^0.1.4"
+mypy = "^1.6.1"
+
+[tool.poetry-dynamic-versioning]
+vcs = "git"
+enable = true
+bump = true
+
+[build-system]
+requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning>=1.0.0,<2.0.0"]
+build-backend = "poetry_dynamic_versioning.backend"
+
+[tool.conda-lock]
+default-non-conda-source = "pip"
+platforms = ['linux-64']
+
+[tool.ruff]
+line-length = 79
+preview = true
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.ruff.isort]
+combine-as-imports = true
+
+[tool.mypy]
+strict = True
+ignore_missing_imports = True
+enable_incomplete_features = True
+plugins = numpy.typing.mypy_plugin

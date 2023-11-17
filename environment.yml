@@ -1,6 +1,12 @@
 name: gromacs
 channels:
-    - conda-forge
+  - conda-forge
+  - nodefaults
 dependencies:
-    - poetry
-    - conda-lock
+  - python=3.11.*
+  - mamba
+  - pip
+  - poetry=1.*
+  - conda-forge::gromacs=2023
+platforms:
+  - linux-64
